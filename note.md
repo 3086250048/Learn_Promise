@@ -30,5 +30,27 @@
     -只有resolve和reject函数可以修改PromiseResult的value
 
 #Promise中的API
-    -Promise构造函数
-            -Promise(excutor)
+    -Promise(excutor)构造函数
+        -excutor函数:执行器 (resolve,reject)=>{}
+            -resolve函数:内部定义成功时我们调用的函数 value=>{}
+            -reject函数:内部定义失败时我们调研的函数 reason=>{}
+            -excutor函数会在Promise内部立即同步调用，异步操作会在执行器中执行
+    -Promise.prototype.then方法:(onResolved,onRejected)=>{}
+        -onResolved函数:成功的回调函数(value)=>{}
+        -onRejected函数:失败的回调函数(reason)=>{}
+        -指定用于得到成功value的成功回调和用于得到失败resaon的失败回调，会返回一个新的promise对象
+    -Promise.prototype.catch方法(onRejected)=>{}
+        -onRejected函数:失败的回调函数(reason)=>{}
+        -catch只能指定失败的回调
+    -Promise.resolve方法:(value)=>{}
+        -value:成功的数据或对象
+        -返回一个成功或失败的promise对象
+    -Promise.reject方法:(reason)=>{}
+        -reason:失败的原因
+        -返回一个失败的promise对象
+    -Promise.all方法:(promises)=>{}
+        -promises:包含n个promise数组
+        -返回一个新的promise,只有所有的promise都成功才成功，只要有一个失败则直接失败
+    -Promise.race 方法:(promises)=>{}
+        -promise：包含n个promise的数组
+        -返回一个新的promise，第一个完成的promise的结果状态就是最终的结果状态

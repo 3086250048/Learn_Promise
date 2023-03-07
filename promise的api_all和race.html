@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    let p1=new Promise((resolve,reject)=>{
+        setInterval(() => {
+            resolve('ok')
+        }, 1000);
+      
+    })
+    let p2=Promise.resolve('success')
+    let p3=Promise.reject('error')
+    // const result0=Promise.all([p1,p2,p3])
+    // console.log(result)
+    const result1=Promise.race([p1,p2,p3])
+    console.log(result1)
+</script>
+</html>

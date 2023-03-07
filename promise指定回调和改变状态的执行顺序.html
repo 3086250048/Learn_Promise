@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+/*如果Promise中执行异步任务，则先指定回调后改变状态
+如果Promise中执行同步任务，则先改变状态后指定回调*/
+    /*
+        如何先改变状态再指定回调?
+            在执行器中直接调用resolve()/reject()
+            延长更长时间才调用then()
+        什么时候得到数据?
+            如果先指定的回调，那当状态发生改变时，回调函数就会调用，得到数据
+            如果先改变姿态，那当指定回调时，回调函数就会调用，得到数据
+    */
+    let p=new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            resolve('Ok')
+        },1000)
+    })
+
+    p.then(value=>{
+        console.log(value)
+    })
+</script>
+</html>

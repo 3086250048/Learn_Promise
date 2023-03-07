@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    //当promise改变状态时，对应的回调都会执行
+    let p =new Promise((resolve,reject)=>{
+        resolve('ok')
+    })
+    //回调1
+    p.then(value=>{
+        console.log(value,1)
+    })
+    //回调2
+    p.then(value=>{
+        console.log(value,2)
+    })
+
+</script>
+</html>

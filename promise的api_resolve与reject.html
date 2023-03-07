@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    /*resolve方法
+    如果传入的参数为非Promise类型的对象，则返回的结果为成功的promise对象
+    如果传入的参数为promise对象，则参数的结果决定了resolve的结果*/
+    // let p1=Promise.resolve('111')
+    // console.log(p1)
+    // let p2=Promise.resolve(new Promise((resolve,reject)=>{
+    //     // resolve('ok')
+    //     reject('fault')
+        
+    // }))
+    // console.log(p2)
+    // p2.catch((reason)=>{
+    //     console.log(reason)
+    // })
+    /*reject方法
+    */
+//    let p1=Promise.reject(521)
+//    console.log(p1)
+   let p2=Promise.reject(new Promise((resolve,reject)=>{
+        resolve('ok')
+   }))
+   console.log(p2)
+</script>
+</html>
