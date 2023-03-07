@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button id="box0">发送ajax请求</button>
+</body>
+<script>
+    //接口地址 https://api.apiopen.top/api/getTime
+    const bt0=document.getElementById('box0')
+    bt0.addEventListener('click',function(){
+    /* 一般写法
+       // 1.创建对象
+       const xhr=new XMLHttpRequest()
+       //2.初始化
+        xhr.open('GET',' https://api.apiopen.top/api/getTime')
+        //3.发送
+        xhr.send()
+        //4.处理响应结果
+        xhr.onreadystatechange =function(){
+            if(xhr.readyState === 4){
+                //判断状态响应码2xx
+                if(xhr.status >=200 && xhr.status<300){
+                    console.log(xhr.response)
+                }else{
+                    console.log(xhr.status)
+                }
+            }
+        }
+        */
+
+        //  promise写法
+        const p=new Promise((resolve,reject)=>{
+            const xhr = new XMLHttpRequest()
+            xhr.open('GET','https://api.apiopen.top/api/getTime')
+            xhr.send()
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState===4){
+                    if(xhr.status>=200 && xhr.status <300){
+                        resolve(xhr.response)
+                    }
+                    else{
+                        reject(xhr.status)
+                    }
+                }
+            }
+        })
+
+        p.then(value=>{
+            console.log(value)
+        },reason=>{
+            console.log(reason)   
+        })
+       
+
+        
+        
+    })
+
+
+</script>
+</html>

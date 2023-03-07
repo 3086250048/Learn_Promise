@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="box0">点击</button>
+</body>
+<script>
+    function rand(m, n) {
+        return Math.ceil(Math.random() * (n - m + 1)) + m - 1
+    }
+    const bt0 = document.getElementById('box0')
+    bt0.addEventListener('click',function(){
+    //使用一般方法
+    // 
+    //     setTimeout(()=>{
+    //         let n=rand(1,100)
+    //         console.log(n)
+    //         if(n<=30){
+    //             alert('True')
+    //         }else{
+    //             alert('False')
+    //         }
+    //     },1000)
+    //
+
+    /*使用promise
+    异步任务成功的时候调用 resolve
+    异步人物失败的时候调研 reject
+    */
+    const p = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            let n = rand(1, 100)
+            console.log(n)
+            if (n <= 30) {
+                resolve(n) //将promise对象的状态设置为成功
+            } else {
+                reject(n)//将promise对象的状态设置为失败
+            }
+        }, 1000)
+    }
+    )
+    //调用then方法
+    p.then((n)=>{
+     console.log(`true${n}`)
+    },(n)=>{
+        console.log(`false${n}`)
+    })
+})
+   
+</script>
+
+</html>
